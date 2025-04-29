@@ -1,18 +1,25 @@
-import { Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class InputStr {
+export class InputStrService {
   inputValue: string = ''; // Переменная для хранения введённого слова
-  BoolTasks: [boolean, string][] = [];
-  tested:string='test';
+  BoolTasks: Todo[] = [];
 
   onEnter(event: KeyboardEvent): void {
     if (event.key === 'Enter' && this.inputValue.length>0) {
-      this.BoolTasks.push([true,this.inputValue])
-      this.tested = this.inputValue;
+      const newTask:Todo={
+        name: this.inputValue,
+        completed: false
+      }
+      this.BoolTasks.push(newTask)
       this.inputValue = ''; // Очищаем поле ввода
     }
   }
+}
+
+interface Todo {
+  name:string;
+  completed:boolean
 }

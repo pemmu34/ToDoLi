@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {InputStr} from './InputStr';
+import { InputStrService } from './input-str.service';
 import {FormsModule} from '@angular/forms';
 
 @Component({
@@ -11,6 +11,6 @@ import {FormsModule} from '@angular/forms';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  constructor(public inputStr:InputStr) {
+  constructor(public inputStr:InputStrService) {
   }
 }
