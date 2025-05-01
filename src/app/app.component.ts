@@ -9,10 +9,15 @@ import {CheckTaskService} from './check-task.service';
   imports: [
     FormsModule
   ],
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  providers: [CheckTaskService]
 })
 export class AppComponent {
-  constructor(public inputStr:InputStrService,public checkTask:CheckTaskService) {
-  }
   inputValue = signal('');
+  constructor(public inputStr:InputStrService,public checkTask:CheckTaskService) {}
+
+  onEnter() {
+    this.checkTask.checkTask(this.inputValue());
+    this.inputValue.set('');
+  }
 }

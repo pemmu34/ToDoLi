@@ -3,24 +3,23 @@
 <div style="text-align: center">
   <input
     type="text"
-    [(ngModel)]="checkTask.checkTask"
-    (keydown.enter)="checkTask.checkTask"
+    [ngModel]="inputValue()"
+    (ngModelChange)="inputValue.set($event)"
+    (keydown.enter)="onEnter()"
     placeholder="Введите задачу"
   />
 </div>
 
 <div style="text-align: center">
   <p>Ваши задачи:</p>
-  @for(task of inputStr.tasks();track task.name){
+  @for(task of inputStr.tasks(); track task.name) {
     <input
       type="checkbox"
+      [checked]="task.completed"
       (change)="task.completed = !task.completed"
     />
     <span [class.completed]="task.completed">
-        {{ task.name }}<br>
+      {{ task.name }}<br>
     </span>
   }
-</div>>
-
-
-
+</div>
