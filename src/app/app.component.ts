@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, signal   } from '@angular/core';
 import { InputStrService } from './input-str.service';
 import {FormsModule} from '@angular/forms';
+import {CheckTaskService} from './check-task.service';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,7 @@ import {FormsModule} from '@angular/forms';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  constructor(public inputStr:InputStrService) {
+  constructor(public inputStr:InputStrService,public checkTask:CheckTaskService) {
   }
+  inputValue = signal('');
 }
