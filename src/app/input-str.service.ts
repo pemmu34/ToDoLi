@@ -17,5 +17,13 @@ export class InputStrService {
       {name: task, completed: false}
     ]);
   }
+
+  checkTask(task: string): void {
+    if (task.length > 0) {
+      this.addTask(task);
+    }
+  }
+
+
 }
 
