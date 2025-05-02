@@ -1,21 +1,22 @@
-import { Component, signal   } from '@angular/core';
-import { InputStrService } from './input-str.service';
+import { Component, signal, inject } from '@angular/core';
+import { TasksManager } from './tasks-manager';
 import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  imports: [
-    FormsModule
-  ],
+  imports: [FormsModule],
   styleUrl: './app.component.css',
 })
 export class AppComponent {
+  public tasksManager: TasksManager = inject(TasksManager);
+
+  hoveredTaskId: string | null = null;
   inputValue = signal('');
-  constructor(public inputStr:InputStrService) {}
+  uncompletedTasksCount = this.tasksManager.countFalseTasks();
 
   onEnter() {
-    this.inputStr.checkTask(this.inputValue());
+    this.tasksManager.addTask(this.inputValue());
     this.inputValue.set('');
   }
 }
