@@ -2,3 +2,10 @@
   text-decoration: line-through;
   color: #777;
 }
+.delete-btn {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+div:hover .delete-btn {
+  opacity: 1;
+}

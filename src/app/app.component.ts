@@ -11,7 +11,6 @@ import {FormsModule} from '@angular/forms';
 export class AppComponent {
   public tasksManager: TasksManager = inject(TasksManager);
 
-  hoveredTaskId: string | null = null;
   inputValue = signal('');
   uncompletedTasksCount = this.tasksManager.countFalseTasks();
 

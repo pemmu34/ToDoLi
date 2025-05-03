@@ -14,10 +14,7 @@
   <p>Невыполненных задач: {{ uncompletedTasksCount() }}</p>
   <p>Ваши задачи:</p>
   @for (task of tasksManager.tasks(); track task.id) {
-    <div
-      (mouseenter)="hoveredTaskId = task.id"
-      (mouseleave)="hoveredTaskId = null"
-    >
+    <div>
       <input
         type="checkbox"
         [checked]="task.completed"
@@ -26,14 +23,12 @@
       <span [class.completed]="task.completed">
         {{ task.name }}
       </span>
-      @if (hoveredTaskId === task.id) {
         <button
           class="delete-btn"
           (click)="tasksManager.deleteTask(task.id)"
         >
           ×
         </button>
-      }
       <br>
     </div>
   }
