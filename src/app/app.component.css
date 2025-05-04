@@ -9,3 +9,7 @@
 div:hover .delete-btn {
   opacity: 1;
 }
+
+.output-but{
+  opacity: 1;
+}

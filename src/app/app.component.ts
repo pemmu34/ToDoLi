@@ -13,6 +13,7 @@ export class AppComponent {
 
   inputValue = signal('');
   uncompletedTasksCount = this.tasksManager.countFalseTasks();
+  TasksOutput:number = 1;
 
   onEnter() {
     this.tasksManager.addTask(this.inputValue());

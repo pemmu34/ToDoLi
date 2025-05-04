@@ -11,16 +11,23 @@
 </div>
 
 <div style="text-align: center">
+
   <p>Невыполненных задач: {{ uncompletedTasksCount() }}</p>
+
+  <button (click) = "TasksOutput = 1">all</button>
+  <button (click) = "TasksOutput = 2">true</button>
+  <button (click) = "TasksOutput = 3">false</button>
+
   <p>Ваши задачи:</p>
   @for (task of tasksManager.tasks(); track task.id) {
-    <div>
-      <input
-        type="checkbox"
-        [checked]="task.completed"
-        (change)="tasksManager.toggleTaskCompletion(task.id)"
-      />
-      <span [class.completed]="task.completed">
+    @if ((TasksOutput == 1) || (TasksOutput == 2 && task.completed) || (TasksOutput ==3 && !task.completed)){
+      <div>
+        <input
+          type="checkbox"
+          [checked]="task.completed"
+          (change)="tasksManager.toggleTaskCompletion(task.id)"
+        />
+        <span [class.completed]="task.completed">
         {{ task.name }}
       </span>
         <button
@@ -29,7 +36,8 @@
         >
           ×
         </button>
-      <br>
-    </div>
+        <br>
+      </div>
+    }
   }
 </div>
